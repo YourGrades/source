@@ -1,0 +1,9 @@
+var sql = "CREATE TABLE IF NOT EXISTS produtos ("
+                + "	codigoProduto INTEGER PRIMARY KEY,"
+                + "	nome text NOT NULL,"
+                + "	descricao text NOT NULL,"
+                + "	preco REAL,"
+                + "	categoria text NOT NULL,"
+                + "	quantidade INTEGER NOT NULL,"
+                + "	fornecedor text NOT NULL"
+                + ");";
