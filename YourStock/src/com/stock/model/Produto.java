@@ -1,6 +1,7 @@
 package com.stock.model;
 
 public class Produto {
+
     private int codigoProduto;
     private String nome;
     private String descricao;
@@ -8,6 +9,7 @@ public class Produto {
     private String categoria;
     private Fornecedor fornecedor;
     private int quantidadeEstoque = 0;
+    private int codigoFornecedor;
 
     public int getCodigoProduto() {
         return codigoProduto;
@@ -53,6 +55,10 @@ public class Produto {
         return fornecedor;
     }
 
+    public int getCodigoFornecedor(){
+        return this.codigoFornecedor;
+    }
+
     public void setFornecedor(Fornecedor fornecedor) {
         this.fornecedor = fornecedor;
     }
@@ -65,33 +71,23 @@ public class Produto {
         this.quantidadeEstoque = quantidadeEstoque;
     }
 
-    public void atualizarQuantidade(int qtdAtualizacao){
-        int qtd = this.getQuantidadeEstoque() + qtdAtualizacao;
-        this.setQuantidadeEstoque(qtd);
+    public void setCodigoFornecedor(int codigoFornecedor) {
+        this.codigoFornecedor = codigoFornecedor;
     }
+
 
     public double calcularValorTotalEstoque(){
         return (this.getPreco() * this.getQuantidadeEstoque());
     }
 
-    public Produto(int codigoProduto, String nome, String descricao, double preco, String categoria, Fornecedor fornecedor) {
+    public Produto(int codigoProduto,String nome, String descricao, double preco, String categoria, int quantidadeEstoque, int codigoFornecedor) {
         this.codigoProduto = codigoProduto;
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
         this.categoria = categoria;
-        this.fornecedor = fornecedor;
+        this.quantidadeEstoque = quantidadeEstoque;
+        this.codigoFornecedor = codigoFornecedor;
     }
 
-    @Override
-    public String toString() {
-        return "Produto{" +
-                "codigoProduto=" + this.codigoProduto +
-                ", nome='" + this.nome + '\'' +
-                ", descricao='" + this.descricao + '\'' +
-                ", preco=" + this.preco +
-                ", categoria='" + this.categoria + '\'' +
-                ", fornecedor=" + this.fornecedor.getNome() +
-                '}';
-    }
 }

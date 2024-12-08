@@ -1,9 +1,56 @@
-var sql = "CREATE TABLE IF NOT EXISTS produtos ("
-                + "	codigoProduto INTEGER PRIMARY KEY,"
+String sql1 = "CREATE TABLE IF NOT EXISTS fornecedores ("
+                + "	codigoFornecedor INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "	nome text NOT NULL,"
+                + "	email text NOT NULL,"
+                + "	telefone text NOT NULL"
+                + ");";
+
+String sql = "INSERT INTO fornecedores(nome,email,telefone) VALUES(?,?,?)";
+
+
+String sql2 = "CREATE TABLE IF NOT EXISTS produtos ("
+                + "	codigoProduto INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + "	nome text NOT NULL,"
                 + "	descricao text NOT NULL,"
-                + "	preco REAL,"
+                + "	preco REAL NOT NULL,"
                 + "	categoria text NOT NULL,"
-                + "	quantidade INTEGER NOT NULL,"
-                + "	fornecedor text NOT NULL"
+                + "	quantidadeEstoque INTEGER NOT NULL,"
+                + "	codigoFornecedor INTEGER NOT NULL,"
+                + " FOREIGN KEY(codigoFornecedor) REFERENCES fornecedores(codigoFornecedor)"
                 + ");";
+
+String sql = "INSERT INTO produtos(nome,descricao,preco,categoria,quantidadeEstoque,codigoFornecedor) VALUES(?,?,?,?,?,?)";
+
+
+var sql = "CREATE TABLE IF NOT EXISTS entregas ("
+                + "	codigoEntrega INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "	dataEntrega text NOT NULL,"
+                + "	status text NOT NULL,"
+                + "	descricao text NOT NULL,"
+                + "	qtdEntrega INTEGER NOT NULL,"
+                + "	codigoProduto INTEGER NOT NULL,"
+                + " FOREIGN KEY(codigoProduto) REFERENCES produtos(codigoProduto)"
+                + ");";
+
+String sql = "INSERT INTO entregas(dataEntrega,status,descricao,qtdEntrega,codigoProduto) VALUES(?,?,?,?,?)";
+
+
+var sql = "CREATE TABLE IF NOT EXISTS recebimentos ("
+                + "	codigoRecebimento INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "	descricao text NOT NULL,"
+                + "	qtdRecebe INTEGER NOT NULL,"
+                + "	codigoProduto INTEGER NOT NULL,"
+                + " FOREIGN KEY(codigoProduto) REFERENCES produtos(codigoProduto)"
+                + ");";
+
+String sql = "INSERT INTO recebimentos(descricao,qtdRecebe,codigoProduto) VALUES(?,?,?)";
+
+
+var sql = "CREATE TABLE IF NOT EXISTS estoque ("
+                + "	id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + "	codigoProduto INTEGER NOT NULL,"
+                + " FOREIGN KEY(produto) REFERENCES produtos(codigoProduto)"
+                + ");";
+
+String sql = "INSERT INTO estoque(codigoProduto) VALUES(?)";
+

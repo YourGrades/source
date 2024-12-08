@@ -1,18 +1,18 @@
 package com.stock.model;
 
-import java.util.Date;
-
 public class Entrega {
     public enum STATUS {
         PENDENTE,
         ENVIADO,
         ENTREGUE
     }
+
     private int codigoEntrega;
-    private Date dataEntrega;
+    private String dataEntrega;
     private STATUS status;
     private String descricao;
     private int qtdEntrega;
+    private int codigoProduto;
     private Produto produto;
 
     public int getCodigoEntrega() {
@@ -23,11 +23,11 @@ public class Entrega {
         this.codigoEntrega = codigoEntrega;
     }
 
-    public Date getDataEntrega() {
+    public String getDataEntrega() {
         return dataEntrega;
     }
 
-    public void setDataEntrega(Date dataEntrega) {
+    public void setDataEntrega(String dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
 
@@ -59,6 +59,15 @@ public class Entrega {
         this.produto = produto;
     }
 
+    public int getCodigoProduto() {
+
+        return this.codigoProduto;
+    }
+
+    public void setCodigoProduto(int codigoProduto) {
+        this.codigoProduto = codigoProduto;
+    }
+
     public void atualizarStatus(int aux){
         switch (aux){
             case 1:
@@ -72,17 +81,12 @@ public class Entrega {
         }
     }
 
-    public double calcularValorEntrega(){
-        Produto prodEntrega = this.getProduto();
-        return prodEntrega.getPreco() * this.getQtdEntrega();
-    }
-
-    public Entrega(int codigoEntrega, Date dataEntrega, String descricao, int qtdEntrega, Produto produto) {
+    public Entrega(int codigoEntrega,String dataEntrega, String descricao, int qtdEntrega, int codigoProduto) {
         this.codigoEntrega = codigoEntrega;
         this.dataEntrega = dataEntrega;
         this.status = STATUS.PENDENTE;
         this.descricao = descricao;
         this.qtdEntrega = qtdEntrega;
-        this.produto = produto;
+        this.codigoProduto = codigoProduto;
     }
 }

@@ -37,4 +37,11 @@ public class Fornecedor {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    public Fornecedor(int codigoFornecedor,String nome, String email, String telefone) {
+        this.codigoFornecedor = codigoFornecedor;
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+    }
 }

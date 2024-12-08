@@ -1,10 +1,12 @@
 package com.stock.model;
 
 public class Recebimento {
+
     private int codigoRecebimento;
     private String descricao;
-    private Produto produto;
     private int qtdRecebe;
+    private int codigoProduto;
+    private Produto produto;
 
     public int getCodigoRecebimento() {
         return codigoRecebimento;
@@ -30,6 +32,10 @@ public class Recebimento {
         this.produto = produto;
     }
 
+    public int getCodigoProduto(){
+        return this.codigoProduto;
+    }
+
     public int getQtdRecebe() {
         return qtdRecebe;
     }
@@ -38,10 +44,14 @@ public class Recebimento {
         this.qtdRecebe = qtdRecebe;
     }
 
-    public Recebimento(int codigoRecebimento, String descricao, Produto produto, int qtdRecebe) {
+    public void setCodigoProduto(int codigoProduto) {
+        this.codigoProduto = codigoProduto;
+    }
+
+    public Recebimento(int codigoRecebimento, String descricao, int qtdRecebe, int codigoProduto) {
         this.codigoRecebimento = codigoRecebimento;
         this.descricao = descricao;
-        this.produto = produto;
         this.qtdRecebe = qtdRecebe;
+        this.codigoProduto = codigoProduto;
     }
 }
